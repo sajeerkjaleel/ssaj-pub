@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <string.h>
+void proceed_with_credentials(void)
+{
+ // If the password is right, this function is executed
+ printf("Proceed With Credentials\n");
+ // <HIGH PRIVILEGE CODE GOES HERE>
+}
+void proceed_with_limits(void)
+{
+ // If the password is not right, this function is executed
+ printf("Proceed Without Privileges\n");
+ // <LOWER PRIVILEGE CODE GOES HERE>
+}
+int main(void)
+{
+ char buffer[15];
+ int rootPass = 0;
+
+ printf("Welcome. Please enter the password, or hit return.\n");
+ scanf("%s", buffer);
+ if (strcmp(buffer, "passw0rd") == 0)
+ {
+ printf("Access Granted\n");
+ rootPass = 1;
+ }
+ else
+ {
+ printf("Access Denied\n");
+ }
+
+ if (rootPass)
+ {
+ proceed_with_credentials();
+ }
+ else
+ {
+ proceed_with_limits();
+ }
+ return 0;
+}
